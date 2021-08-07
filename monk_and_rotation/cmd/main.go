@@ -37,7 +37,6 @@ func packAddrs(n []int) []interface{} {
 }
 
 func businessLogic(Tests, Num, Ksteps int, arr []int) (newArr []int) {
-	newArr = make([]int, Num)
 	n := 1
 	for n <= Tests {
 		steps := 1
