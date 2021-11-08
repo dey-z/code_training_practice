@@ -1,58 +1,29 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
-	"strings"
 )
 
 func main() {
-	T := 1
-	N := 5
-	K := 2
-	// fmt.Println("Enter T")
+	var T int
 	fmt.Scanf("%d", &T)
-	// fmt.Println("Enter N K")
-	fmt.Scanf("%d %d", &N, &K)
-	// fmt.Println("Enter Input Array")
-	arr := make([]int, N)
-	_, err := fmt.Fscan(os.Stdin, packAddrs(arr)...)
-	if err != nil {
-		os.Exit(0)
-	}
-	// fmt.Fprintf(os.Stdout, "Input is T=%d N=%d K=%d arr=%v\n", T, N, K, arr)
-	s, _ := json.Marshal(businessLogic(T, N, K, arr))
-	str := strings.Trim(string(s), "[]")
-	tkns := strings.Split(str, ",")
-	fmt.Printf("%v\n", strings.Join(tkns, " "))
-}
-
-func packAddrs(n []int) []interface{} {
-	p := make([]interface{}, len(n))
-	for i := range n {
-		p[i] = &n[i]
-	}
-	return p
-}
-
-func businessLogic(Tests, Num, Ksteps int, arr []int) (newArr []int) {
-	n := 1
-	for n <= Tests {
-		steps := 1
-		for steps <= Ksteps {
-			newArr = make([]int, Num)
-			for i := 0; i < len(arr); i++ {
-				rightPos := i + 1
-				if rightPos == len(arr) {
-					rightPos = 0
-				}
-				newArr[rightPos] = arr[i]
-			}
-			arr = newArr
-			steps += 1
+	for T != 0 {
+		var N, K int
+		fmt.Scanf("%d %d", &N, &K)
+		arr := make([]int, N)
+		buf := make([]interface{}, N)
+		for i := 0; i < N; i++ {
+			buf[i] = &arr[i]
 		}
-		n += 1
+		fmt.Scanln(buf...)
+		index := N - (K % N)
+		for i := index; i < N; i++ {
+			fmt.Printf("%d ", arr[i])
+		}
+		for i := 0; i < index; i++ {
+			fmt.Printf("%d ", arr[i])
+		}
+		fmt.Println("")
+		T -= 1
 	}
-	return
 }
