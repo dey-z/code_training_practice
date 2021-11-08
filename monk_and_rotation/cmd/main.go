@@ -1,7 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
+	"strings"
+	"sync"
 )
 
 func main() {
@@ -11,18 +16,24 @@ func main() {
 		var N, K int
 		fmt.Scanf("%d %d", &N, &K)
 		arr := make([]int, N)
-		buf := make([]interface{}, N)
+		in := bufio.NewReader(os.Stdin)
+		line, _ := in.ReadString('\n')
+		strs := strings.Split(line[0:len(line)-1], " ")
+		var wg sync.WaitGroup
+		wg.Add(N)
 		for i := 0; i < N; i++ {
-			buf[i] = &arr[i]
+			go func(i int) {
+				defer wg.Done()
+				arr[i], _ = strconv.Atoi(strs[i])
+			}(i)
 		}
-		fmt.Scanln(buf...)
+		wg.Wait()
 		index := N - (K % N)
-		for i := index; i < N; i++ {
-			fmt.Printf("%d ", arr[i])
+		fmt.Print(strings.Trim(fmt.Sprint(arr[index:N]), "[]"))
+		if len(arr[index:N]) > 0 {
+			fmt.Print(" ")
 		}
-		for i := 0; i < index; i++ {
-			fmt.Printf("%d ", arr[i])
-		}
+		fmt.Print(strings.Trim(fmt.Sprint(arr[0:index]), "[]"))
 		fmt.Println("")
 		T -= 1
 	}
