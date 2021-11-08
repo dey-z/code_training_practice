@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 func main() {
@@ -17,12 +18,11 @@ func main() {
 		}
 		fmt.Scanln(buf...)
 		index := N - (K % N)
-		for i := index; i < N; i++ {
-			fmt.Printf("%d ", arr[i])
+		fmt.Print(strings.Trim(fmt.Sprint(arr[index:N]), "[]"))
+		if len(arr[index:N]) > 0 && len(arr[0:index]) > 0 {
+			fmt.Print(" ")
 		}
-		for i := 0; i < index; i++ {
-			fmt.Printf("%d ", arr[i])
-		}
+		fmt.Print(strings.Trim(fmt.Sprint(arr[0:index]), "[]"))
 		fmt.Println("")
 		T -= 1
 	}
