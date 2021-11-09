@@ -8,7 +8,7 @@ golang
 
 ## build example
 ```
-go build monk_and_rotation/cmd/main.go
+go build <practice_or_folder_name>/cmd/main.go
 ```
 
 ## run
