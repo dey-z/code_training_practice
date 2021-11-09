@@ -31,8 +31,9 @@ func main() {
 			fmt.Print(strings.Trim(fmt.Sprint(nums[0:index]), "[]"))
 			fmt.Println("")
 		} else {
-			N, _ = strconv.Atoi(strings.Split(line, " ")[0])
-			K, _ = strconv.Atoi(strings.Split(line, " ")[1])
+			split := strings.Split(line, " ")
+			N, _ = strconv.Atoi(split[0])
+			K, _ = strconv.Atoi(split[1])
 		}
 		cnt += 1
 		if cnt >= T*2 {
