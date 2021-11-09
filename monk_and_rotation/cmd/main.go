@@ -1,58 +1,42 @@
 package main
 
 import (
-	"encoding/json"
+	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
 func main() {
-	T := 1
-	N := 5
-	K := 2
-	// fmt.Println("Enter T")
+	var T int
 	fmt.Scanf("%d", &T)
-	// fmt.Println("Enter N K")
-	fmt.Scanf("%d %d", &N, &K)
-	// fmt.Println("Enter Input Array")
-	arr := make([]int, N)
-	_, err := fmt.Fscan(os.Stdin, packAddrs(arr)...)
-	if err != nil {
-		os.Exit(0)
-	}
-	// fmt.Fprintf(os.Stdout, "Input is T=%d N=%d K=%d arr=%v\n", T, N, K, arr)
-	s, _ := json.Marshal(businessLogic(T, N, K, arr))
-	str := strings.Trim(string(s), "[]")
-	tkns := strings.Split(str, ",")
-	fmt.Printf("%v\n", strings.Join(tkns, " "))
-}
+	scanner := bufio.NewScanner(os.Stdin)
+	const maxCapacity = 1000000
+	buf := make([]byte, maxCapacity)
+	scanner.Buffer(buf, maxCapacity)
 
-func packAddrs(n []int) []interface{} {
-	p := make([]interface{}, len(n))
-	for i := range n {
-		p[i] = &n[i]
-	}
-	return p
-}
-
-func businessLogic(Tests, Num, Ksteps int, arr []int) (newArr []int) {
-	n := 1
-	for n <= Tests {
-		steps := 1
-		for steps <= Ksteps {
-			newArr = make([]int, Num)
-			for i := 0; i < len(arr); i++ {
-				rightPos := i + 1
-				if rightPos == len(arr) {
-					rightPos = 0
-				}
-				newArr[rightPos] = arr[i]
+	cnt := 0
+	var N, K int
+	for scanner.Scan() {
+		var line string
+		line = scanner.Text()
+		if cnt%2 != 0 {
+			nums := strings.Fields(line)
+			index := N - (K % N)
+			fmt.Print(strings.Trim(fmt.Sprint(nums[index:N]), "[]"))
+			if len(nums[index:N]) > 0 && len(nums[0:index]) > 0 {
+				fmt.Print(" ")
 			}
-			arr = newArr
-			steps += 1
+			fmt.Print(strings.Trim(fmt.Sprint(nums[0:index]), "[]"))
+			fmt.Println("")
+		} else {
+			N, _ = strconv.Atoi(strings.Split(line, " ")[0])
+			K, _ = strconv.Atoi(strings.Split(line, " ")[1])
 		}
-		n += 1
+		cnt += 1
+		if cnt >= T*2 {
+			break
+		}
 	}
-	return
 }
