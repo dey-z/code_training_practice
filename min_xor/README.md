@@ -1,7 +1,7 @@
 ## Min Xor
->Minimum AND xor OR of consecutive A_i & A_j
->T is the test cases, N is the size of the array, A is the array
->(A and B) xor (A or B) is basically A xor B
+>Minimum AND xor OR of consecutive A_i & A_j  
+>T is the test cases, N is the size of the array, A is the array  
+>(A and B) xor (A or B) is basically A xor B  
 
 ## Sample Input
 ```
