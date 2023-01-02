@@ -9,14 +9,15 @@
 
 golang
 
-## build example
+## build & run example
 
 ```
 go build <path>/cmd/main.go
+./main [args]
 ```
 
-## run
+## run directly
 
 ```
-go run <path_to_code> <args>
+go run <path>/<file>.go [args]
 ```
