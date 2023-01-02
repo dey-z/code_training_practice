@@ -1,18 +1,22 @@
 # code_training_practice
 
 ## link
+
 - https://www.hackerearth.com/practice/
 - https://app.codility.com/programmers/
 
 ## language used
+
 golang
 
 ## build example
+
 ```
-go build <practice_or_folder_name>/cmd/main.go
+go build <path>/cmd/main.go
 ```
 
 ## run
+
 ```
-./main
+go run <path_to_code> <args>
 ```
