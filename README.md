@@ -1,8 +1,8 @@
 # code_training_practice
 
 ## link
-https://www.hackerearth.com/practice/
-https://app.codility.com/programmers/
+- https://www.hackerearth.com/practice/
+- https://app.codility.com/programmers/
 
 ## language used
 golang
