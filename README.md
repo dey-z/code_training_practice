@@ -1,7 +1,8 @@
-# codemonk_practice
+# code_training_practice
 
 ## link
-https://www.hackerearth.com/practice/codemonk/
+https://www.hackerearth.com/practice/
+https://app.codility.com/programmers/
 
 ## language used
 golang
