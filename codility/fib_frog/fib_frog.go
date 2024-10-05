@@ -4,18 +4,14 @@ import (
 	"fmt"
 	"math"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/fib_frog/testdata"
 )
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{0, 1, 1, 1, 1, 0}
-	m["2"] = []int{0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-	m["3"] = []int{0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0}
-	m["4"] = []int{1}
-	m["5"] = []int{0, 1, 0, 1, 0}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
@@ -43,9 +39,6 @@ func Solution(A []int) int {
 	}
 	// not considering 1st two fibs which are 0 & 1
 	F = F[2:]
-	fmt.Println(F)
-	fmt.Println(fibCached)
-
 	// algorithm
 	// 1. get starting leaves that can be reached in one step
 	// 2. then find intermediate leaves
@@ -65,7 +58,6 @@ func Solution(A []int) int {
 		}
 		i += 1
 	}
-	fmt.Println(reachSteps)
 
 	// search leafs with more than one step
 	i = 0
@@ -78,7 +70,6 @@ func Solution(A []int) int {
 		minV := 100000
 		for _, fib := range F {
 			previousI := i - fib
-			fmt.Println(i, fib, previousI)
 			if previousI < 0 {
 				break
 			}
@@ -93,10 +84,6 @@ func Solution(A []int) int {
 		i += 1
 	}
 
-	fmt.Println("")
-	fmt.Println(A)
-	fmt.Println(reachSteps)
-	fmt.Println("")
 	if reachSteps[N-1] > 0 {
 		return reachSteps[N-1]
 	} else {
