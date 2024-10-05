@@ -3,19 +3,16 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/equi_leader/testdata"
 )
 
 var stack []int
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{4, 3, 4, 4, 4, 2}
-	m["2"] = []int{6, 8, 4, 6, 8, 6, 6}
-	m["3"] = []int{5, 5, 5}
-	m["4"] = []int{1, 2}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
@@ -36,14 +33,12 @@ func Solution(A []int) int {
 		if len(stack) == 0 {
 			value = A[i]
 			stack = push(stack, value)
-			fmt.Println(stack)
 		} else {
 			if value != A[i] {
 				stack = pop(stack)
 			} else {
 				stack = push(stack, value)
 			}
-			fmt.Println(stack)
 		}
 		i += 1
 	}
