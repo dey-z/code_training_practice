@@ -3,17 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/max_slice_sum/testdata"
 )
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{3, 2, -6, 4, 0}
-	m["2"] = []int{1, 1, 1}
-	m["3"] = []int{-2, -2, -2}
-	m["4"] = []int{-10}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
