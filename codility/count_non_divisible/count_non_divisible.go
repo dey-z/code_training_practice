@@ -4,18 +4,14 @@ import (
 	"fmt"
 	"math"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/count_non_divisible/testdata"
 )
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{1}
-	m["2"] = []int{1, 1}
-	m["3"] = []int{3, 1, 2, 3, 6}
-	m["4"] = []int{1, 2, 5, 2, 3}
-	m["5"] = []int{3, 1, 2, 3, 6, 12, 4}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
@@ -60,20 +56,3 @@ func Solution(A []int) []int {
 	}
 	return nonDivisibles
 }
-
-// func allDivisors(n int) []int {
-// 	D := []int{}
-// 	i := 1
-// 	for i <= int(math.Sqrt(float64(n))) {
-// 		if n%i == 0 {
-// 			if n/i == i {
-// 				D = append(D, i)
-// 			} else {
-// 				D = append(D, i)
-// 				D = append(D, n/i)
-// 			}
-// 		}
-// 		i += 1
-// 	}
-// 	return D
-// }
