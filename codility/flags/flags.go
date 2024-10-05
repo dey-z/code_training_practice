@@ -4,22 +4,14 @@ import (
 	"fmt"
 	"math"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/flags/testdata"
 )
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{}
-	m["2"] = []int{0}
-	m["3"] = []int{1}
-	m["4"] = []int{1, 1}
-	m["5"] = []int{1, 5, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2}
-	m["6"] = []int{1, 2, 7}
-	m["7"] = []int{1, 5, 2, 9}
-	m["8"] = []int{3, 2, 1}
-	m["9"] = []int{0, 0, 0, 0, 0, 1, 0, 1, 0, 1}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
