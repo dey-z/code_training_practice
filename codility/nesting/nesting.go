@@ -3,20 +3,16 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/dey-z/code_training_practice/codility/nesting/testdata"
 )
 
 var stack []string
 
 func main() {
 	var S string
-	m := make(map[string]string)
-	m["1"] = "(())"
-	m["2"] = "(()(())())"
-	m["3"] = "())"
-	m["4"] = ""
-	m["5"] = ")("
 	args := os.Args[1:]
-	S = m[args[0]]
+	S = testdata.T[args[0]]
 	fmt.Println(Solution(S))
 }
 
