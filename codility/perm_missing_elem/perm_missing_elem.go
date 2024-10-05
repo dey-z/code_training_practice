@@ -4,18 +4,14 @@ import (
 	"fmt"
 	"os"
 	"sort"
+
+	"github.com/dey-z/code_training_practice/codility/perm_missing_elem/testdata"
 )
 
 func main() {
 	var A []int
-	m := make(map[string][]int)
-	m["1"] = []int{2, 3, 5, 7, 1, 6}
-	m["2"] = []int{1, 3, 4, 6, 2, 5}
-	m["3"] = []int{1, 2, 3, 4, 5, 6}
-	m["4"] = []int{}
-	m["5"] = []int{2, 3, 4, 5, 6, 7}
 	args := os.Args[1:]
-	A = m[args[0]]
+	A = testdata.T[args[0]]
 	fmt.Println(Solution(A))
 }
 
